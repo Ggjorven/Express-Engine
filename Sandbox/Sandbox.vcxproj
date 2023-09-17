@@ -75,7 +75,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EX_DEBUG;EX_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Express/src;$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glad/data/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Express/src;$(SolutionDir)Express/vendor/stb_image/data/include;$(SolutionDir)Express/vendor/spdlog/data/include;$(SolutionDir)Express/vendor/ImGui/data;$(SolutionDir)Express/vendor/glm/data;$(SolutionDir)Express/vendor/GLFW/data/include;$(SolutionDir)Express/vendor/Glad/data/include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EX_RELEASE;EX_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Express/src;$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glad/data/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Express/src;$(SolutionDir)Express/vendor/stb_image/data/include;$(SolutionDir)Express/vendor/spdlog/data/include;$(SolutionDir)Express/vendor/ImGui/data;$(SolutionDir)Express/vendor/glm/data;$(SolutionDir)Express/vendor/GLFW/data/include;$(SolutionDir)Express/vendor/Glad/data/include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,7 +109,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EX_DIST;EX_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Express/src;$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glad/data/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Express/src;$(SolutionDir)Express/vendor/stb_image/data/include;$(SolutionDir)Express/vendor/spdlog/data/include;$(SolutionDir)Express/vendor/ImGui/data;$(SolutionDir)Express/vendor/glm/data;$(SolutionDir)Express/vendor/GLFW/data/include;$(SolutionDir)Express/vendor/Glad/data/include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>

@@ -1,6 +1,9 @@
 #pragma once
 #include "expch.h"
 
+//#include "Express/Events/Event.hpp"
+//#include "Express/Events/ApplicationEvent.hpp"
+
 namespace Express
 {
 
@@ -13,6 +16,10 @@ namespace Express
 		void Run();
 	private:
 		void Init();
+
+		//void OnWindowClose(WindowClosedEvent& e); //TODO events
+	private:
+		bool m_Running;
 	};
 
 	Application* CreateApplication();

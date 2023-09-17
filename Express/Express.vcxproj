@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Express\Core\Application.cpp" />
+    <ClCompile Include="src\Express\Core\Log.cpp" />
     <ClCompile Include="src\Express\expch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">expch.h</PrecompiledHeaderFile>
@@ -28,6 +29,7 @@
     <ClInclude Include="src\Express\Core\Application.hpp" />
     <ClInclude Include="src\Express\Core\Core.hpp" />
     <ClInclude Include="src\Express\Core\EntryPoint.hpp" />
+    <ClInclude Include="src\Express\Core\Log.hpp" />
     <ClInclude Include="src\Express\expch.h" />
     <ClInclude Include="src\Express\Express.hpp" />
     <ClInclude Include="vendor\stb_image\data\stb_image.h" />
