@@ -14,6 +14,26 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="data\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="data\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="data\imconfig.h" />
+    <ClInclude Include="data\imgui.h" />
+    <ClInclude Include="data\imgui_internal.h" />
+    <ClInclude Include="data\imstb_rectpack.h" />
+    <ClInclude Include="data\imstb_textedit.h" />
+    <ClInclude Include="data\imstb_truetype.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="data\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="data\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="data\imgui.cpp" />
+    <ClCompile Include="data\imgui_demo.cpp" />
+    <ClCompile Include="data\imgui_draw.cpp" />
+    <ClCompile Include="data\imgui_tables.cpp" />
+    <ClCompile Include="data\imgui_widgets.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -76,7 +96,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Express/vendor/GLFW/data/include;$(ProjectDir);$(ProjectDir)data;$(ProjectDir)data/backends;$(ProjectDir)include;$(ProjectDir)src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +113,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Express/vendor/GLFW/data/include;$(ProjectDir);$(ProjectDir)data;$(ProjectDir)data/backends;$(ProjectDir)include;$(ProjectDir)src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,7 +131,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Express/vendor/GLFW/data/include;$(ProjectDir);$(ProjectDir)data;$(ProjectDir)data/backends;$(ProjectDir)include;$(ProjectDir)src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
