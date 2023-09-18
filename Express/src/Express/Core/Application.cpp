@@ -3,6 +3,8 @@
 
 #include "Express/Core/Log.hpp"
 
+#include "Platforms/Windows/WindowsWindow.hpp"
+
 namespace Express
 {
 	Application::Application()
@@ -21,12 +23,13 @@ namespace Express
 	{
 		while (m_Running)
 		{
-
+			m_window->OnUpdate();
 		}
 	}
 
 	void Application::Init()
 	{
 		Log::Init();
+		m_window = Window::Create();
 	}
 }
