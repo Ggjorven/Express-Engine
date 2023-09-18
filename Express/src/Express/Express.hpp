@@ -6,6 +6,6 @@
 #include "Express/Core/Log.hpp"
 
 
-//---Express-Engine---//
+//---Express-Engine-EntryPoint---//
 #include "Express/Core/EntryPoint.hpp"
-//--------------------//
+//-------------------------------//
