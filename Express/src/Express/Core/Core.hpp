@@ -9,6 +9,7 @@
 
 
 #define EX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+//#define EX_FUNC(returntype, name, ...) typedef returntype (* name) (__VA_ARGS__)
 
 #define BIT(x) (1 << x)
 

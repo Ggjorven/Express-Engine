@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 #Intermidiate files
-bin-int/
+bin-int/**

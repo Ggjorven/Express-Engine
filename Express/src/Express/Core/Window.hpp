@@ -4,9 +4,12 @@
 
 #include "Express/Core/Core.hpp"
 
+#include "Express/Events/Event.hpp"
+
 namespace Express
 {
-	//using EventCallBackFunction = std::function<void(Event&)>; //TODO events
+	using EventCallBackFunction = std::function<void(Event&)>;
+	//EX_FUNC(bool, EventCallBackFunction, Event& e);
 
 	struct WindowProperties
 	{
@@ -27,7 +30,7 @@ namespace Express
 		uint32_t Height;
 
 		bool Vsync = false;
-		//EventCallBackFunction CallBack;
+		EventCallBackFunction CallBack;
 
 		WindowData(std::string name = "Express Window", uint32_t width = 1280, uint32_t height = 720/*, EventCallBackFunction func = ...*/)
 			: Name(name), Width(width), Height(height)/*, CallBack(func)*/
@@ -54,7 +57,7 @@ namespace Express
 	public:
 		virtual ~Window() = default;
 
-		//void SetEventCallBack(EventCallBackFunction func) = 0;
+		virtual void SetEventCallBack(EventCallBackFunction func) = 0;
 
 		virtual void OnUpdate() = 0;
 

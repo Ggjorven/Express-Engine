@@ -27,11 +27,13 @@ namespace Express
 
 
 
-	#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
+	#define EVENT_CLASS_TYPE(type)\
+		static EventType GetStaticType() { return EventType::type; }\
 		virtual EventType GetEventType() const override { return GetStaticType(); }\
 		virtual const char* GetName() const override { return #type; }
 
-	#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
+	#define EVENT_CLASS_CATEGORY(category)\
+		virtual int GetCategoryFlags() const override { return category; }
 
 
 
@@ -60,17 +62,18 @@ namespace Express
 	{
 	public:
 		EventHandler(Event& e)
-			: m_Event(e)
+			: m_event(e)
 		{
 		}
 
-		//to pass in a func you have to use EX_BIND_EVENT_FN(func)
-		template<typename T>
-		bool Handle(std::function<bool(Event&)> func) 
+		//EX_FUNC(bool, EventFunction, Event& e);
+
+		template<typename T, typename F>
+		bool Handle(const F& func)
 		{
 			if (m_event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(static_cast<T&>(m_event));
+				m_event.Handled = func(static_cast<T&>(m_event));
 				return true;
 			}
 			return false;

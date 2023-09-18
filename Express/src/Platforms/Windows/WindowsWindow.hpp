@@ -13,7 +13,7 @@ namespace Express
 		WindowsWindow(const WindowProperties properties);
 		virtual ~WindowsWindow();
 
-		//void SetEventCallBack(EventCallBackFunction func) override { m_data.CallBack = func; }
+		void SetEventCallBack(EventCallBackFunction func) override { m_data.CallBack = func; }
 
 		void OnUpdate() override;
 

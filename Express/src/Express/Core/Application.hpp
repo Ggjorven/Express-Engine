@@ -3,8 +3,8 @@
 
 #include "Express/Core/Window.hpp"
 
-//#include "Express/Events/Event.hpp"
-//#include "Express/Events/ApplicationEvent.hpp"
+#include "Express/Events/Event.hpp"
+#include "Express/Events/ApplicationEvent.hpp"
 
 namespace Express
 {
@@ -15,13 +15,14 @@ namespace Express
 		Application();
 		virtual ~Application();
 
-		//void OnEvent(Event& e);
+		void OnEvent(Event& e);
 
 		void Run();
 	private:
 		void Init();
 
-		//void OnWindowClose(WindowClosedEvent& e); //TODO events
+		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e); 
 	private:
 		Scope<Window> m_window;
 		bool m_Running;
