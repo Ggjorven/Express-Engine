@@ -22,9 +22,9 @@ namespace Express
 		if (status == 0) EX_CORE_CRITICAL("Failed to initialize Glad!");
 
 		EX_CORE_INFO("OpenGL Info:");
-		EX_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
-		EX_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
-		EX_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
+		EX_CORE_INFO("  Vendor: {0}", reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
+		EX_CORE_INFO("  Renderer: {0}", reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
+		EX_CORE_INFO("  Version: {0}", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
 	}
 
 	void OpenGLContext::SwapBuffers()

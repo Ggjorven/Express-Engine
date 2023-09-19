@@ -15,19 +15,22 @@ namespace Express
 
 	WindowsWindow::WindowsWindow(const WindowProperties properties)
 	{
-		if (Init(properties))
-			EX_CORE_INFO("WindowsWindow created!");
+		if (!Init(properties))
+		{
+			EX_CORE_CRITICAL("Failed to create a (windows)window.");
+			return;
+		}
+		//EX_CORE_INFO("WindowsWindow created!");
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
-		EX_CORE_INFO("WindowsWindow destroyed...");
+		//EX_CORE_INFO("WindowsWindow destroyed...");
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		//TODO remove this, temporary, needs to be in a OpenGLContext : GraphicsContext class
 		m_context->SwapBuffers();
 	}
 
