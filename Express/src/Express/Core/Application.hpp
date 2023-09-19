@@ -26,6 +26,7 @@ namespace Express
 	private:
 		Scope<Window> m_window;
 		bool m_Running;
+		bool m_minimized;
 	};
 
 	Application* CreateApplication();

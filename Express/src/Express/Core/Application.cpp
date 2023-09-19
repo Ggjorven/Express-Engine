@@ -5,6 +5,9 @@
 
 #include "Platforms/Windows/WindowsWindow.hpp"
 
+#include "Express/Renderer/Renderer.hpp"
+#include "Express/Renderer/RendererCommand.hpp"
+
 namespace Express
 {
 	Application::Application()
@@ -17,6 +20,7 @@ namespace Express
 	{
 		//EX_TRACE("Application finished, waiting for user input...");
 		//std::cin.get(); //So the exe doesn't immediately close
+		Renderer::Shutdown();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -32,7 +36,11 @@ namespace Express
 	{
 		while (m_Running)
 		{
+			RendererCommand::Clear(); //Not in thecherno's version, but we need to clear the buffers somehow?
+
 			m_window->OnUpdate();
+
+			//Draw
 		}
 	}
 
@@ -40,6 +48,8 @@ namespace Express
 	{
 		Log::Init();
 		m_window = Window::Create();
+
+		Renderer::Init();
 
 		m_window->SetEventCallBack(EX_BIND_EVENT_FN(Application::OnEvent));
 	}
@@ -52,6 +62,15 @@ namespace Express
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			m_minimized = true;
+			return true;
+		}
+
+		m_minimized = false;
+
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
 		return true;
 	}
 }

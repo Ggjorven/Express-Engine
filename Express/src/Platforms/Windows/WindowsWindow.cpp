@@ -11,7 +11,7 @@
 namespace Express
 {
 	bool WindowsWindow::s_GLFWinitialized = false;
-
+	uint32_t WindowsWindow::s_Instances = 0;
 
 	WindowsWindow::WindowsWindow(const WindowProperties properties)
 	{
@@ -28,7 +28,7 @@ namespace Express
 	{
 		glfwPollEvents();
 		//TODO remove this, temporary, needs to be in a OpenGLContext : GraphicsContext class
-		glfwSwapBuffers(m_window);
+		m_context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
@@ -51,15 +51,15 @@ namespace Express
 
 		//Window creation
 		m_window = glfwCreateWindow((int)properties.Width, (int)properties.Height, properties.Name.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_window);
+		s_Instances++;
 
 		glfwSetWindowUserPointer(m_window, &m_data); //So we can access the data
 
-		//Graphics context init //TODO
+		//Graphics context init 
+		m_context = GraphicsContext::Create(m_window);
+		m_context->Init();
 
-
-
-		//Event system //TODO
+		//Event system
 		glfwSetWindowSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -152,6 +152,15 @@ namespace Express
 		
 
 		return 1;
+	}
+
+	void WindowsWindow::Shutdown()
+	{
+		glfwDestroyWindow(m_window);
+		s_Instances--;
+
+		if (s_Instances == 0)
+			glfwTerminate();
 	}
 
 	void WindowsWindow::ErrorCallBack(int errorCode, const char* description)

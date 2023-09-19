@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Renderer/GraphicsContext.hpp"
+
 namespace Express
 {
 
@@ -27,12 +29,15 @@ namespace Express
 
 	private:
 		bool Init(WindowProperties properties);
+		void Shutdown();
 
 		static void ErrorCallBack(int errorCode, const char* description);
 	private:
 		static bool s_GLFWinitialized;
+		static uint32_t s_Instances;
 
 		GLFWwindow* m_window;
+		Scope<GraphicsContext> m_context;
 		WindowData m_data;
 	};
 }
