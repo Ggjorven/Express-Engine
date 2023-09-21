@@ -13,8 +13,6 @@
 
 #define BIT(x) (1 << x)
 
-
-
 namespace Express
 {
 	template<typename T>

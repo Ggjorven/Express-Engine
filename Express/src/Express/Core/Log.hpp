@@ -3,6 +3,7 @@
 #include "Express/Core/Core.hpp"
 
 #include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h> //for custom formats
 
 namespace Express
 {
@@ -47,3 +48,6 @@ namespace Express
 #define EX_WARN(...)			Express::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define EX_ERROR(...)			Express::Log::GetClientLogger()->error(__VA_ARGS__)
 #define EX_CRITICAL(...)		Express::Log::GetClientLogger()->critical(__VA_ARGS__)
+
+//Assert
+#define EX_CORE_ASSERT(x, ...) if(!(x)) { EX_CORE_CRITICAL(__VA_ARGS__); __debugbreak; }

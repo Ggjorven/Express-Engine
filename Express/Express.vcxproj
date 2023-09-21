@@ -24,11 +24,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Express\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Express\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Express\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Express\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Express\Renderer\RendererCommand.cpp" />
     <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\RenderingAPIs\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\RenderingAPIs\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\RenderingAPIs\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="vendor\stb_image\data\stb_image.cpp" />
@@ -45,11 +47,13 @@
     <ClInclude Include="src\Express\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Express\expch.h" />
     <ClInclude Include="src\Express\Express.hpp" />
+    <ClInclude Include="src\Express\Renderer\Buffer.hpp" />
     <ClInclude Include="src\Express\Renderer\GraphicsContext.hpp" />
     <ClInclude Include="src\Express\Renderer\Renderer.hpp" />
     <ClInclude Include="src\Express\Renderer\RendererAPI.hpp" />
     <ClInclude Include="src\Express\Renderer\RendererCommand.hpp" />
     <ClInclude Include="src\Platforms\Windows\WindowsWindow.hpp" />
+    <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLBuffer.hpp" />
     <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLContext.hpp" />
     <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLRendererAPI.hpp" />
     <ClInclude Include="vendor\stb_image\data\stb_image.h" />

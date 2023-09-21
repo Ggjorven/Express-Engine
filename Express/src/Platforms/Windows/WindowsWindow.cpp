@@ -61,6 +61,7 @@ namespace Express
 		//Graphics context init 
 		m_context = GraphicsContext::Create(m_window);
 		m_context->Init();
+		SetVSync(true);
 
 		//Event system
 		glfwSetWindowSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
