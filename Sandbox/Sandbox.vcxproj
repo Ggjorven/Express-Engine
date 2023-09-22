@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\SandboxApplication.cpp" />
+    <ClCompile Include="src\SandboxLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Express\Express.vcxproj">
@@ -132,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SandboxApplication.hpp" />
+    <ClInclude Include="src\SandboxLayer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

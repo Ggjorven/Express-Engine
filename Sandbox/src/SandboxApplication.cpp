@@ -1,10 +1,27 @@
 #include "SandboxApplication.hpp"
 
+#include "SandboxLayer.hpp"
 
-//===================================================
-//Creation the application
+Sandbox::Sandbox()
+{
+	AddLayer(new SandboxLayer());
+}
+
+Sandbox::~Sandbox()
+{
+}
+
+
+
+
+
+//===================================================//
+//-----------Creation of the application-------------//
+//===================================================//
 Express::Application* Express::CreateApplication() 
 {
 	return new Sandbox();
 }
-//===================================================
+
+#include <Express/Core/EntryPoint.hpp>
+//===================================================//

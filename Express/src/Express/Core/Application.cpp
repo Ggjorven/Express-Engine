@@ -10,6 +10,9 @@
 
 namespace Express
 {
+	Application* Application::s_Instance = nullptr;
+
+
 	Application::Application()
 		: m_Running(true)
 	{
@@ -38,20 +41,34 @@ namespace Express
 		{
 			RendererCommand::Clear(); //Not in thecherno's version, but we need to clear the buffers somehow?
 
-			m_window->OnUpdate();
+			m_Window->OnUpdate();
 
 			//Draw
 		}
 	}
 
+	void Application::AddLayer(Layer* layer)
+	{
+		m_LayerStack.AddLayer(layer);
+	}
+
+	void Application::AddOverlay(Layer* layer)
+	{
+		m_LayerStack.AddOverlay(layer);
+	}
+
 	void Application::Init()
 	{
 		Log::Init();
-		m_window = Window::Create();
+
+		s_Instance = this;
+
+		m_Window = Window::Create();
+		m_Window->SetEventCallBack(EX_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
 
-		m_window->SetEventCallBack(EX_BIND_EVENT_FN(Application::OnEvent));
+		//ImGui TODO
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -64,11 +81,11 @@ namespace Express
 	{
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
-			m_minimized = true;
+			m_Minimized = true;
 			return true;
 		}
 
-		m_minimized = false;
+		m_Minimized = false;
 
 		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
 		return true;

@@ -50,4 +50,4 @@ namespace Express
 #define EX_CRITICAL(...)		Express::Log::GetClientLogger()->critical(__VA_ARGS__)
 
 //Assert
-#define EX_CORE_ASSERT(x, ...) if(!(x)) { EX_CORE_CRITICAL(__VA_ARGS__); __debugbreak; }
+#define EX_CORE_ASSERT(x, ...) { if(!(x)) { EX_CORE_CRITICAL("Assertion failed: {0} ", __VA_ARGS__); __debugbreak; } }

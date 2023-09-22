@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Express\Core\Application.cpp" />
+    <ClCompile Include="src\Express\Core\Layer.cpp" />
+    <ClCompile Include="src\Express\Core\LayerStack.cpp" />
     <ClCompile Include="src\Express\Core\Log.cpp" />
     <ClCompile Include="src\Express\Core\Window.cpp" />
     <ClCompile Include="src\Express\expch.cpp">
@@ -39,6 +41,8 @@
     <ClInclude Include="src\Express\Core\Application.hpp" />
     <ClInclude Include="src\Express\Core\Core.hpp" />
     <ClInclude Include="src\Express\Core\EntryPoint.hpp" />
+    <ClInclude Include="src\Express\Core\Layer.hpp" />
+    <ClInclude Include="src\Express\Core\LayerStack.hpp" />
     <ClInclude Include="src\Express\Core\Log.hpp" />
     <ClInclude Include="src\Express\Core\Window.hpp" />
     <ClInclude Include="src\Express\Events\ApplicationEvent.hpp" />

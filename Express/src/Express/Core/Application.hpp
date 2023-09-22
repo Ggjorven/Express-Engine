@@ -6,6 +6,8 @@
 #include "Express/Events/Event.hpp"
 #include "Express/Events/ApplicationEvent.hpp"
 
+#include "Express/Core/LayerStack.hpp"
+
 namespace Express
 {
 
@@ -18,15 +20,26 @@ namespace Express
 		void OnEvent(Event& e);
 
 		void Run();
+
+		void AddLayer(Layer* layer);
+		void AddOverlay(Layer* layer);
+
+		inline Window& GetWindow() { return *m_Window; }
+
+		inline static Application& Get() { return *s_Instance; }
 	private:
 		void Init();
 
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e); 
 	private:
-		Scope<Window> m_window;
+		Scope<Window> m_Window;
 		bool m_Running;
-		bool m_minimized;
+		bool m_Minimized;
+
+		LayerStack m_LayerStack;
+	private:
+		static Application* s_Instance;
 	};
 
 	Application* CreateApplication();

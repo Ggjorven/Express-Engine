@@ -18,9 +18,15 @@
     <ClCompile Include="src\SandboxApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\SandboxLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SandboxApplication.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SandboxLayer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

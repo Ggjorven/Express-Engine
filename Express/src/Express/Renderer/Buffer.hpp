@@ -1,5 +1,7 @@
 #pragma once
-#include "expch.h"
+
+#include <string>
+#include <vector>
 
 #include "Express/Core/Core.hpp"
 #include "Express/Core/Log.hpp"
