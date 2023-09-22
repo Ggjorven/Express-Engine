@@ -5,7 +5,7 @@ So far you can basically only create a window and barely draw a triangle.
 It's just a project I started for fun.
 
 To use this repository:
-clone this repository using the command:
+clone this repository using the command:        
 'git clone --recursive https://github.com/Ggjorven/Express-Engine.git'
 
 when that's finished op the .sln file with Visual Studio.
@@ -18,5 +18,5 @@ one thing to note about that^ is that you have to add the submodules yourself, s
 
 Thanks for reading!
 
-Created by: ggjorven
+Created by: ggjorven                                  
 Copyright @ggjorven
