@@ -6,7 +6,7 @@ It's just a project I started for fun.
 
 
 To clone this repository use the command:
-git clone --recursive https://github.com/Ggjorven/Express-Engine.git
+'git clone --recursive https://github.com/Ggjorven/Express-Engine.git'
 
 
 You could also clone the repository without the '--recursive' command,
