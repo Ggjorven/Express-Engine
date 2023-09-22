@@ -2,11 +2,11 @@
 	path = Express/vendor/spdlog/data
 	url = https://github.com/gabime/spdlog.git
 [submodule "Express/vendor/GLFW"]
-	path = Express/vendor/GLFW
+	path = Express/vendor/GLFW/data
 	url = https://github.com/glfw/glfw.git
 [submodule "Express/vendor/ImGui"]
-	path = Express/vendor/ImGui
+	path = Express/vendor/ImGui/data
 	url = https://github.com/ocornut/imgui.git
 [submodule "Express/vendor/glm"]
-	path = Express/vendor/glm
+	path = Express/vendor/glm/data
 	url = https://github.com/g-truc/glm.git
