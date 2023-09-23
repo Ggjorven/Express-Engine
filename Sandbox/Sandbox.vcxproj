@@ -135,6 +135,9 @@
     <ClInclude Include="src\SandboxApplication.hpp" />
     <ClInclude Include="src\SandboxLayer.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\basic.glsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

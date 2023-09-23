@@ -22,7 +22,7 @@
 #include "Express/Renderer/Renderer.hpp"
 #include "Express/Renderer/RendererAPI.hpp"
 #include "Express/Renderer/RendererCommand.hpp"
-
+#include "Express/Renderer/Shader.hpp"
 
 
 //---Express-Engine-EntryPoint---//

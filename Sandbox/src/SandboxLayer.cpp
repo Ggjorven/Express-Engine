@@ -27,6 +27,7 @@ void SandboxLayer::OnAttach()
 
 	m_VertexBuffer = Express::VertexBuffer::Create(vertices, sizeof(vertices));
 	m_IndexBuffer = Express::IndexBuffer::Create(indices, sizeof(indices));
+	m_Shader = Express::Shader::Create("name", Express::Shader::Read("assets/shaders/basic.glsl").VertexSource, Express::Shader::Read("assets/shaders/basic.glsl").FragmentSource);
 }
 
 void SandboxLayer::OnDetach()
@@ -37,6 +38,7 @@ void SandboxLayer::OnUpdate()
 {
 	m_VertexBuffer->Bind();
 	m_IndexBuffer->Bind();
+	m_Shader->Bind();
 
 	//Express::RendererCommand::Submit;
 }
