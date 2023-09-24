@@ -49,7 +49,7 @@ namespace Express
 		case ShaderDataType::Bool:     return GL_BOOL;
 		}
 
-		EX_CORE_ASSERT("Failed to deduce proper type.");
+		EX_CORE_ASSERT(false, "Failed to deduce proper type.");
 		return GL_FALSE;
 	}
 }
