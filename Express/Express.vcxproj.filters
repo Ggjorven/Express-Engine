@@ -69,6 +69,12 @@
     <ClCompile Include="src\RenderingAPIs\OpenGL\OpenGLShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Express\Renderer\VertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Express\Core\Application.hpp">
@@ -144,6 +150,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLShader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Express\Renderer\VertexArray.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLVertexArray.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

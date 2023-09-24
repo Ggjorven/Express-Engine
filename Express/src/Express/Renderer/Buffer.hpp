@@ -34,7 +34,7 @@ namespace Express
 	class BufferLayout
 	{
 	public:
-		BufferLayout() = default;
+		BufferLayout() = default;	
 		BufferLayout(const std::initializer_list<BufferElement>& elements);
 
 		inline uint32_t GetStride() const { return m_Stride; }
