@@ -3,6 +3,8 @@
 
 #include "Express/Core/Log.hpp"
 
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Express
 {
 
@@ -27,6 +29,9 @@ namespace Express
 	void OpenGLShader::SetUniformInt1(const std::string& name, int value)
 	{
 		//TODO uniform setting
+
+		GLint location = GetUniformLocation(name);
+		glUniform1i(location, value);
 	}
 
 	void OpenGLShader::SetUniformFloat3(const std::string& name, const glm::vec3& value)
@@ -35,7 +40,7 @@ namespace Express
 
 	void OpenGLShader::SetUniformFloat4(const std::string& name, const glm::vec4& value)
 	{
-		Bind();
+		//Bind();
 
 		GLint location = GetUniformLocation(name);
 		glUniform4f(location, value.r, value.g, value.b, value.a); //GL_INVALID_OPERATION without Bind()?
@@ -43,6 +48,8 @@ namespace Express
 
 	void OpenGLShader::SetUniformMat4(const std::string& name, const glm::mat4& value)
 	{
+		GLint location = GetUniformLocation(name);
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
 	}
 
 	GLuint OpenGLShader::Create(const std::string& vertexSource, const std::string& fragmentSource)
@@ -113,11 +120,13 @@ namespace Express
 
 	GLint OpenGLShader::GetUniformLocation(const std::string& name)
 	{
+		//Bind();
+
 		//TODO cache
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
 
 		if (location == -1)
-			EX_CORE_ASSERT(false, "Uniform {0} does not exist.", name);
+			EX_CORE_ASSERT(false, "Uniform does not exist.", name); //Shader probably not bound
 
 		return location;
 	}

@@ -21,7 +21,7 @@
     <ClCompile Include="src\Express\expch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vendor\stb_image\data\stb_image.cpp">
+    <ClCompile Include="vendor\stb_image\data\src\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Express\Core\Log.cpp">
@@ -75,6 +75,15 @@
     <ClCompile Include="src\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Express\Renderer\Renderer2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Express\Renderer\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderingAPIs\OpenGL\OpenGLTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Express\Core\Application.hpp">
@@ -92,7 +101,7 @@
     <ClInclude Include="src\Express\Express.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vendor\stb_image\data\stb_image.h">
+    <ClInclude Include="vendor\stb_image\data\include\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Express\Core\Log.hpp">
@@ -156,6 +165,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLVertexArray.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Express\Renderer\Renderer2D.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Express\Renderer\Texture.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLTexture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

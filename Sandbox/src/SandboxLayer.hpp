@@ -14,6 +14,10 @@ public:
 	void OnUpdate() override;
 	void OnImGuiRender() override;
 	void OnEvent(Express::Event& e) override;
+
+private:
+	bool ResizeEvent(Express::WindowResizeEvent& e);
+
 private:
 	Express::Ref<Express::VertexBuffer> m_VertexBuffer;
 	Express::Ref<Express::IndexBuffer> m_IndexBuffer;

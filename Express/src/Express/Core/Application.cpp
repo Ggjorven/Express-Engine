@@ -38,7 +38,8 @@ namespace Express
 		handler.Handle<WindowCloseEvent>(EX_BIND_EVENT_FN(Application::OnWindowClose));
 		handler.Handle<WindowResizeEvent>(EX_BIND_EVENT_FN(Application::OnWindowResize));
 
-		//EX_WARN("[Event]: {0}", e.ToString());
+		for (Layer* layer : m_LayerStack)
+			layer->OnEvent(e);
 	}
 
 	void Application::Run()

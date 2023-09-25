@@ -1,6 +1,16 @@
-#include "SandboxApplication.hpp"
-
 #include "SandboxLayer.hpp"
+
+#include <Express/Express.hpp>
+
+class Sandbox : public Express::Application
+{
+public:
+	Sandbox();
+	virtual ~Sandbox();
+
+private:
+};
+
 
 Sandbox::Sandbox()
 {

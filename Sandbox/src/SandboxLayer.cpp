@@ -13,7 +13,7 @@ SandboxLayer::~SandboxLayer()
 
 void SandboxLayer::OnAttach()
 {
-	Express::RendererCommand::SetClearColour(glm::vec4(0.2f, 0.3f, 0.4f, 1.0f));
+	Express::RendererCommand::SetClearColour(glm::vec4(0.2f, 0.3f, 0.2f, 1.0f));
 
 	float vertices[] = 
 	{
@@ -38,7 +38,8 @@ void SandboxLayer::OnAttach()
 
 	m_Shader = Express::Shader::Create("name", Express::Shader::Read("assets/shaders/basic.glsl").VertexSource, Express::Shader::Read("assets/shaders/basic.glsl").FragmentSource);
 	
-	m_Shader->SetUniformFloat4("u_Colour", glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
+	m_Shader->Bind();
+	m_Shader->SetUniformFloat4("u_Colour", glm::vec4(0.9f, 0.5f, 0.5f, 1.0f));
 }
 
 void SandboxLayer::OnDetach()
@@ -47,13 +48,13 @@ void SandboxLayer::OnDetach()
 
 void SandboxLayer::OnUpdate()
 {
-	//EX_TRACE("OnUpdate called.");
-
 	m_Shader->Bind();
-	m_IndexBuffer->Bind();
+	//m_IndexBuffer->Bind();
 	m_VertexArray->Bind();
 
-	Express::RendererCommand::DrawIndexed(m_VertexArray);
+	//Express::RendererCommand::DrawIndexed(m_VertexArray);
+
+	Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 }
 
 void SandboxLayer::OnImGuiRender()
@@ -62,4 +63,14 @@ void SandboxLayer::OnImGuiRender()
 
 void SandboxLayer::OnEvent(Express::Event& e)
 {
+	Express::EventHandler handler(e);
+
+	handler.Handle<Express::WindowResizeEvent>(EX_BIND_EVENT_FN(SandboxLayer::ResizeEvent));
+}
+
+bool SandboxLayer::ResizeEvent(Express::WindowResizeEvent& e)
+{
+	//EX_WARN("Resize event");
+	Express::RendererCommand::SetViewPort(0, 0, 1280, 720);
+	return true;
 }

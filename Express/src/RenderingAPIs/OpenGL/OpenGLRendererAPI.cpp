@@ -45,7 +45,7 @@ namespace Express
 	{
 		//EX_CORE_WARN("IndexBuffer Count: {0}", vertexArray->GetIndexBuffer()->GetCount());
 		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-		//glBindTexture(GL_TEXTURE_2D, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 }

@@ -24,6 +24,7 @@
 #include "Express/Renderer/RendererCommand.hpp"
 #include "Express/Renderer/Shader.hpp"
 #include "Express/Renderer/VertexArray.hpp"
+#include "Express/Renderer/Renderer2D.hpp"
 
 
 //---Express-Engine-EntryPoint---//

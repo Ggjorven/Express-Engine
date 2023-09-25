@@ -21,6 +21,8 @@ namespace Express
 
 	void OpenGLVertexArray::Bind() const
 	{
+		//m_IndexBuffer->Bind(); //? //TODO remove?
+
 		glBindVertexArray(m_RendererID);
 	}
 
