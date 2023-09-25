@@ -10,11 +10,13 @@ namespace Express
 		: m_Name(name), m_RendererID(0)
 	{
 		m_RendererID = Create(vertexSource, fragmentSource);
+		//EX_CORE_WARN("OpenGLShader m_RendererID: {0}", m_RendererID);
 	}
 
 	void OpenGLShader::Bind() const
 	{
 		glUseProgram(m_RendererID);
+		//EX_CORE_WARN("OpenGLShader bound.");
 	}
 
 	void OpenGLShader::UnBind() const
@@ -33,6 +35,10 @@ namespace Express
 
 	void OpenGLShader::SetUniformFloat4(const std::string& name, const glm::vec4& value)
 	{
+		Bind();
+
+		GLint location = GetUniformLocation(name);
+		glUniform4f(location, value.r, value.g, value.b, value.a); //GL_INVALID_OPERATION without Bind()?
 	}
 
 	void OpenGLShader::SetUniformMat4(const std::string& name, const glm::mat4& value)
@@ -50,6 +56,7 @@ namespace Express
 		glAttachShader(program, fragmentShader);
 
 		glLinkProgram(program);
+		glValidateProgram(program);
 
 		//Check for linking failure
 		GLint isLinked = 0;
@@ -68,6 +75,10 @@ namespace Express
 			EX_CORE_ASSERT(false, "Shader link failure!");
 			return 0;
 		}
+
+		//Cleanup
+		glDeleteShader(m_IntermediateShaderIDs[GL_VERTEX_SHADER]);
+		glDeleteShader(m_IntermediateShaderIDs[GL_FRAGMENT_SHADER]);
 
 		return program;
 	}
@@ -96,6 +107,18 @@ namespace Express
 			return 0;
 		}
 
+		m_IntermediateShaderIDs[type] = id;
 		return id;
+	}
+
+	GLint OpenGLShader::GetUniformLocation(const std::string& name)
+	{
+		//TODO cache
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+
+		if (location == -1)
+			EX_CORE_ASSERT(false, "Uniform {0} does not exist.", name);
+
+		return location;
 	}
 }

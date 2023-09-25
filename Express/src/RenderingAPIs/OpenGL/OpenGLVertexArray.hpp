@@ -22,7 +22,6 @@ namespace Express
 		const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const override { return m_VertexBuffers; }
 		const Ref<IndexBuffer>& GetIndexBuffer() const override { return m_IndexBuffer; }
 
-		static GLenum ShaderDataTypeToOpenGLType(ShaderDataType type);
 	private:
 
 	private:

@@ -23,6 +23,7 @@
 #include "Express/Renderer/RendererAPI.hpp"
 #include "Express/Renderer/RendererCommand.hpp"
 #include "Express/Renderer/Shader.hpp"
+#include "Express/Renderer/VertexArray.hpp"
 
 
 //---Express-Engine-EntryPoint---//

@@ -71,8 +71,8 @@
     <ClInclude Include="vendor\stb_image\data\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="vendor\Glad\Glad.vcxproj">
-      <Project>{7536a45e-e435-4666-80ba-c6af85b31889}</Project>
+    <ProjectReference Include="vendor\Glew\Glew.vcxproj">
+      <Project>{0d33557d-dce6-46bb-af83-17ee0cf3e109}</Project>
     </ProjectReference>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{ddf81ee9-b856-436b-ac97-0c3099d8b55a}</Project>
@@ -146,10 +146,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;EX_DEBUG;EX_PLATFORM_WINDOWS;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;GLEW_STATIC;GLFW_INCLUDE_NONE;EX_DEBUG;EX_PLATFORM_WINDOWS;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glad/data/include;$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;$(ProjectDir)src/Express</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glew/data/include;$(ProjectDir)vendor/Glad/data/include;$(ProjectDir)vendor/Glew/data/include;$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;$(ProjectDir)src/Express</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>expch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -165,11 +165,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;EX_RELEASE;EX_PLATFORM_WINDOWS;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;GLFW_INCLUDE_NONE;EX_RELEASE;EX_PLATFORM_WINDOWS;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>expch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glad/data/include;$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;$(ProjectDir)src/Express</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glew/data/include;$(ProjectDir)vendor/Glad/data/include;$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;$(ProjectDir)src/Express</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -185,11 +185,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;EX_DIST;EX_PLATFORM_WINDOWS;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;GLFW_INCLUDE_NONE;EX_DIST;EX_PLATFORM_WINDOWS;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>expch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glad/data/include;$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;$(ProjectDir)src/Express</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendor/stb_image/data/include;$(ProjectDir)vendor/spdlog/data/include;$(ProjectDir)vendor/ImGui/data;$(ProjectDir)vendor/glm/data;$(ProjectDir)vendor/GLFW/data/include;$(ProjectDir)vendor/Glew/data/include;$(ProjectDir)vendor/Glad/data/include;$(ProjectDir);$(ProjectDir)include;$(ProjectDir)src;$(ProjectDir)src/Express</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>

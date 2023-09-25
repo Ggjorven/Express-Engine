@@ -24,6 +24,12 @@ namespace Express
 		//EX_TRACE("Application finished, waiting for user input...");
 		//std::cin.get(); //So the exe doesn't immediately close
 		Renderer::Shutdown();
+
+		for (Layer* layer : m_LayerStack)
+		{
+			layer->OnDetach();
+			delete layer;
+		}
 	}
 
 	void Application::OnEvent(Event& e)
@@ -43,7 +49,10 @@ namespace Express
 
 			m_Window->OnUpdate();
 
-			//Draw
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+			
+			m_Window->OnRender();
 		}
 	}
 

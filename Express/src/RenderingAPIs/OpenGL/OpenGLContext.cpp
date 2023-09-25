@@ -3,7 +3,7 @@
 
 #include "Express/Core/Log.hpp"
 
-#include <glad/glad.h>
+#include <GL/glew.h>
 #include <GL/GL.h>
 
 namespace Express
@@ -12,14 +12,16 @@ namespace Express
 	OpenGLContext::OpenGLContext(GLFWwindow* window)
 		: m_windowHandle(window)
 	{
+		//EX_WARN("OpenGL Constructor.");
 		if (window == nullptr) EX_CRITICAL("Window handle passed in is a nullptr! {0} {1}", __FILE__, __LINE__);
 	}
 
 	void OpenGLContext::Init()
 	{
+		//EX_WARN("OpenGL Init.");
 		glfwMakeContextCurrent(m_windowHandle);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		if (status == 0) EX_CORE_CRITICAL("Failed to initialize Glad!");
+		int status = glewInit();
+		if (status != GLEW_OK) EX_CORE_CRITICAL("Failed to initialize Glad!");
 
 		EX_CORE_INFO("OpenGL Info:");
 		EX_CORE_INFO("  Vendor: {0}", reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
@@ -29,6 +31,7 @@ namespace Express
 
 	void OpenGLContext::SwapBuffers()
 	{
+		//EX_WARN("OpenGL SwapBuffers.");
 		glfwSwapBuffers(m_windowHandle);
 	}
 

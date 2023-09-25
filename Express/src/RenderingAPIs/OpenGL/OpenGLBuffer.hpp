@@ -9,7 +9,7 @@ namespace Express
 	{
 	public:
 		OpenGLVertexBuffer(float* vertices, uint32_t size);
-		virtual ~OpenGLVertexBuffer() = default;
+		virtual ~OpenGLVertexBuffer();
 
 		void Bind() const override;
 		void UnBind() const override;
@@ -27,8 +27,8 @@ namespace Express
 	class OpenGLIndexBuffer : public IndexBuffer
 	{
 	public:
-		OpenGLIndexBuffer(uint32_t* indices, uint32_t size);
-		virtual ~OpenGLIndexBuffer() = default;
+		OpenGLIndexBuffer(uint32_t* indices, uint32_t count);
+		virtual ~OpenGLIndexBuffer();
 
 		void Bind() const;
 		void Unbind() const;

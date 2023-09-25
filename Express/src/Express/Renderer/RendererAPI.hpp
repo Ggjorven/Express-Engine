@@ -4,6 +4,8 @@
 
 #include <glm/glm.hpp>
 
+#include "Express/Renderer/VertexArray.hpp"
+
 namespace Express
 {
 
@@ -21,10 +23,13 @@ namespace Express
 		virtual void SetClearColour(const glm::vec4& colour) = 0;
 		virtual void SetViewPort(uint32_t x, uint32_t y, uint32_t width, uint32_t height) = 0;
 
+		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;
+
 		inline static API GetAPI() { return s_API; }
 
 		static Scope<RendererAPI> Create();
 	private:
 		static API s_API;
 	};
+
 }

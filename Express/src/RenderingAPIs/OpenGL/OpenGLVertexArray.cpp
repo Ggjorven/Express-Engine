@@ -1,14 +1,17 @@
 #include "expch.h"
 #include "OpenGLVertexArray.hpp"
 
-#include <glad/glad.h>
+#include <GL/glew.h>
 
 namespace Express
 {
+	static GLenum ShaderDataTypeToOpenGLType(ShaderDataType type);
+
 	OpenGLVertexArray::OpenGLVertexArray()
 		: m_RendererID(0), m_VertexBufferIndex(0)
 	{
 		glCreateVertexArrays(1, &m_RendererID);
+		//EX_CORE_WARN("(OpenGLVertexArray) m_RendererID: {0}", m_RendererID);
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
@@ -18,21 +21,46 @@ namespace Express
 
 	void OpenGLVertexArray::Bind() const
 	{
+		glBindVertexArray(m_RendererID);
 	}
 
 	void OpenGLVertexArray::UnBind() const
 	{
+		glBindVertexArray(0);
 	}
 
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
+		EX_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
+
+		glBindVertexArray(m_RendererID);
+		vertexBuffer->Bind();
+
+		const auto& layout = vertexBuffer->GetLayout();
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(m_VertexBufferIndex);
+			glVertexAttribPointer(m_VertexBufferIndex,
+				element.GetComponentCount(),
+				ShaderDataTypeToOpenGLType(element.Type),
+				element.Normalized ? GL_TRUE : GL_FALSE,
+				layout.GetStride(),
+				(const void*)element.Offset);
+			m_VertexBufferIndex++;
+		}
+
+		m_VertexBuffers.emplace_back(vertexBuffer);
 	}
 
 	void OpenGLVertexArray::AddIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
+		glBindVertexArray(m_RendererID);
+		indexBuffer->Bind();
+
+		m_IndexBuffer = indexBuffer;
 	}
 
-	GLenum OpenGLVertexArray::ShaderDataTypeToOpenGLType(ShaderDataType type)
+	static GLenum ShaderDataTypeToOpenGLType(ShaderDataType type)
 	{
 		switch (type)
 		{

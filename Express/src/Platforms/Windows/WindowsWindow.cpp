@@ -31,13 +31,17 @@ namespace Express
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		m_context->SwapBuffers();
+	}
+
+	void WindowsWindow::OnRender()
+	{
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
 		glfwSwapInterval(enabled);
-		m_data.Vsync = enabled;
+		m_Data.Vsync = enabled;
 	}
 
 
@@ -53,18 +57,22 @@ namespace Express
 		glfwSetErrorCallback(ErrorCallBack);
 
 		//Window creation
-		m_window = glfwCreateWindow((int)properties.Width, (int)properties.Height, properties.Name.c_str(), nullptr, nullptr);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
+		m_Window = glfwCreateWindow((int)properties.Width, (int)properties.Height, properties.Name.c_str(), nullptr, nullptr);
 		s_Instances++;
 
-		glfwSetWindowUserPointer(m_window, &m_data); //So we can access the data
+		glfwSetWindowUserPointer(m_Window, &m_Data); //So we can access the data
 
 		//Graphics context init 
-		m_context = GraphicsContext::Create(m_window);
-		m_context->Init();
+		m_Context = GraphicsContext::Create(m_Window);
+		m_Context->Init();
 		SetVSync(true);
 
 		//Event system
-		glfwSetWindowSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				data.Width = width;
@@ -74,7 +82,7 @@ namespace Express
 				data.CallBack(event);
 			});
 
-		glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)
+		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				WindowCloseEvent event;
@@ -82,7 +90,7 @@ namespace Express
 			});
 
 		
-		glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
@@ -109,7 +117,7 @@ namespace Express
 				}
 			});
 
-		glfwSetCharCallback(m_window, [](GLFWwindow* window, unsigned int keycode)
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
@@ -117,7 +125,7 @@ namespace Express
 				data.CallBack(event);
 			});
 
-		glfwSetMouseButtonCallback(m_window, [](GLFWwindow* window, int button, int action, int mods)
+		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
@@ -138,7 +146,7 @@ namespace Express
 				}
 			});
 
-		glfwSetScrollCallback(m_window, [](GLFWwindow* window, double xOffset, double yOffset)
+		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
@@ -146,7 +154,7 @@ namespace Express
 				data.CallBack(event);
 			});
 
-		glfwSetCursorPosCallback(m_window, [](GLFWwindow* window, double xPos, double yPos)
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
@@ -160,7 +168,7 @@ namespace Express
 
 	void WindowsWindow::Shutdown()
 	{
-		glfwDestroyWindow(m_window);
+		glfwDestroyWindow(m_Window);
 		s_Instances--;
 
 		if (s_Instances == 0)

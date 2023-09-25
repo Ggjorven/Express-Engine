@@ -2,9 +2,11 @@
 
 #include "Express/Core/Core.hpp"
 
-#include <glad/glad.h>
+#include <GL/glew.h>
 
 #include "Express/Renderer/Shader.hpp"
+
+#include <unordered_map>
 
 namespace Express
 {
@@ -27,10 +29,15 @@ namespace Express
 
 	private:
 		GLuint Create(const std::string& vertexSource, const std::string& fragmentSource);
-		static GLuint Compile(GLenum type, const std::string& data);
+		GLuint Compile(GLenum type, const std::string& data);
+
+		GLint GetUniformLocation(const std::string& name);
 	private:
 		uint32_t m_RendererID;
 		std::string m_Name;
+
+		std::unordered_map<GLenum, GLint> m_IntermediateShaderIDs;
+		std::unordered_map<std::string, GLint> m_UniformCache; //TODO
 	};
 
 }

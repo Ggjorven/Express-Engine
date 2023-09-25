@@ -17,5 +17,7 @@ public:
 private:
 	Express::Ref<Express::VertexBuffer> m_VertexBuffer;
 	Express::Ref<Express::IndexBuffer> m_IndexBuffer;
+	Express::Ref<Express::VertexArray> m_VertexArray;
+
 	Express::Ref<Express::Shader> m_Shader;
 };

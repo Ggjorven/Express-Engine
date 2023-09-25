@@ -60,6 +60,7 @@ namespace Express
 		virtual void SetEventCallBack(EventCallBackFunction func) = 0;
 
 		virtual void OnUpdate() = 0;
+		virtual void OnRender() = 0;
 
 		virtual uint32_t GetWidth() const = 0;
 		virtual uint32_t GetHeight() const = 0;

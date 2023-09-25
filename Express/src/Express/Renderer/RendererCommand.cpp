@@ -27,4 +27,9 @@ namespace Express
 		s_RendererAPI->SetViewPort(x, y, width, height);
 	}
 
+	void RendererCommand::DrawIndexed(const Ref<VertexArray>& vertexArray)
+	{
+		s_RendererAPI->DrawIndexed(vertexArray);
+	}
+
 }
