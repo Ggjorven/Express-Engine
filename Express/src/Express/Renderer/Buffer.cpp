@@ -28,6 +28,62 @@ namespace Express
 		return 0;
 	}
 
+	std::string ShaderDataTypeToString(ShaderDataType type)
+	{
+		switch (type)
+		{
+		case ShaderDataType::Float:    return "Float";
+		case ShaderDataType::Float2:   return "Float2";
+		case ShaderDataType::Float3:   return "Float3";
+		case ShaderDataType::Float4:   return "Float3";
+		case ShaderDataType::Mat3:     return "Mat3";
+		case ShaderDataType::Mat4:     return "Mat4";
+		case ShaderDataType::Int:      return "Int";
+		case ShaderDataType::Int2:     return "Int2";
+		case ShaderDataType::Int3:     return "Int3";
+		case ShaderDataType::Int4:     return "Int4";
+		case ShaderDataType::Bool:     return "Bool";
+		}
+
+		EX_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		return "";
+	}
+
+	/*
+	std::ostream& operator<<(std::ostream& os, const BufferElement& element)
+	{
+		os << "Name: " << element.Name << ", Type: " << ShaderDataTypeToString(element.Type) << ", Size: " << element.Size << ", Offset: " << element.Offset << ", Normalized: " << element.Normalized;
+		return os;
+	}
+
+	std::ostream& operator<<(std::ostream& os, BufferLayout* layout)
+	{
+		std::vector<BufferElement> elements = layout->GetElements();
+
+		for (int i = 0; i < elements.size(); i++)
+			os << elements[i] << std::endl;
+
+		return os;
+	*/
+
+	std::string BufferElement::ToString()
+	{
+		std::stringstream ss;
+		ss << "Name: " << Name << ", Type: " << ShaderDataTypeToString(Type) << ", Size: " << Size << ", Offset: " << Offset << ", Normalized: " << Normalized;
+		
+		return ss.str();
+	}
+
+	std::string BufferLayout::ToString()
+	{
+		std::stringstream ss;
+
+		for (int i = 0; i < m_Elements.size(); i++)
+			ss << m_Elements[i].ToString() << std::endl;
+
+		return ss.str();
+	}
+
 	BufferElement::BufferElement(ShaderDataType type, const std::string& name, bool normalized)
 		: Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized)
 	{

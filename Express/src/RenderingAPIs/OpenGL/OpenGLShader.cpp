@@ -49,6 +49,7 @@ namespace Express
 	void OpenGLShader::SetUniformMat4(const std::string& name, const glm::mat4& value)
 	{
 		GLint location = GetUniformLocation(name);
+		//glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
 	}
 

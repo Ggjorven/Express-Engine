@@ -15,6 +15,7 @@ namespace Express
 	};
 
 	uint32_t ShaderDataTypeSize(ShaderDataType type);
+	std::string ShaderDataTypeToString(ShaderDataType type);
 
 	struct BufferElement
 	{
@@ -29,6 +30,9 @@ namespace Express
 		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false);
 
 		uint32_t GetComponentCount() const;
+
+		//friend std::ostream& operator<<(std::ostream& os, const BufferElement& layout);
+		std::string ToString();
 	};
 
 	class BufferLayout
@@ -44,6 +48,9 @@ namespace Express
 		std::vector<BufferElement>::iterator end() { return m_Elements.end(); }
 		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); }
 		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
+
+		std::string ToString();
+		//friend std::ostream& operator<<(std::ostream& os, const BufferLayout& layout);
 	private:
 		void CalculateOffsetsAndStride();
 	private:

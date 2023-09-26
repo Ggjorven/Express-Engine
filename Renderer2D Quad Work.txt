@@ -53,19 +53,20 @@ namespace Express
 		s_QuadData->QuadVertexArray->AddVertexBuffer(VertexBuffer);
 		s_QuadData->QuadVertexArray->AddIndexBuffer(IndexBuffer);
 
-
+		/* TODO
 		//Texture & Shader
 		s_QuadData->WhiteTexture = Texture2D::Create(1, 1);
 		uint32_t whiteTextureData = 0xffffffff;
-
 		s_QuadData->WhiteTexture->SetData(&whiteTextureData, sizeof(uint32_t));
 
-
 		ShaderSource shaderSource = Shader::Read("assets/shaders/Texture.glsl");
-		s_QuadData->TextureShader = Shader::Create("ColourShader", shaderSource.VertexSource, shaderSource.FragmentSource);
-
+		s_QuadData->TextureShader = Shader::Create("TextureShader", shaderSource.VertexSource, shaderSource.FragmentSource);
 		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformInt1("u_Texture", 0);
+		*/
+
+		ShaderSource shaderSource = Shader::Read("assets/shaders/Colour.glsl");
+		s_QuadData->TextureShader = Shader::Create("ColourShader", shaderSource.VertexSource, shaderSource.FragmentSource);
 	}
 
 	void Renderer2D::Shutdown()
@@ -84,17 +85,9 @@ namespace Express
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		s_QuadData->TextureShader->Bind();
-		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
-
 		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", color);
 
-
-		s_QuadData->WhiteTexture->Bind();
-
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->QuadVertexArray->Bind();
 
 		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);

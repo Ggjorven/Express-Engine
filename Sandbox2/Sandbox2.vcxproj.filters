@@ -22,5 +22,11 @@
   <ItemGroup>
     <None Include="assets\shaders\basic.glsl" />
     <None Include="assets\shaders\Texture.glsl" />
+    <None Include="assets\shaders\Colour.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\QuadLayer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

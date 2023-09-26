@@ -132,7 +132,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\basic.glsl" />
+    <None Include="assets\shaders\Colour.glsl" />
     <None Include="assets\shaders\Texture.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\QuadLayer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

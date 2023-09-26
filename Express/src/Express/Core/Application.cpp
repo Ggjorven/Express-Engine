@@ -97,7 +97,7 @@ namespace Express
 
 		m_Minimized = false;
 
-		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		//Renderer::OnWindowResize(e.GetWidth(), e.GetHeight()); //So the vertices say the same
 		return true;
 	}
 }
