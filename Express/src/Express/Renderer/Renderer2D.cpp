@@ -77,6 +77,9 @@ namespace Express
 	{
 	}
 
+	//================
+	//Coloured Quads
+	//================
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		DrawQuad({position.x, position.y, 0.0f}, size, color);
@@ -84,13 +87,14 @@ namespace Express
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) 
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
 		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
 
 		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", color);
-
 
 		s_QuadData->WhiteTexture->Bind();
 
@@ -100,12 +104,83 @@ namespace Express
 		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
 	}
 
+	//+ rotation
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color)
 	{
+		DrawQuad({ position.x, position.y, 0.0f }, size, rotation, color);
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
 	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation / 2.0f), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", color);
+
+		s_QuadData->WhiteTexture->Bind();
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->QuadVertexArray->Bind();
+
+		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
+	}
+
+	//================
+	//Textured quads
+	//================
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture)
+	{
+		DrawQuad({ position.x, position.y, 0.0f }, size, texture);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", glm::vec4(1.0f));
+
+		texture->Bind();
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->QuadVertexArray->Bind();
+
+		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
+	}
+
+	//+ rotation
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& color)
+	{
+		DrawQuad({ position.x, position.y, 0.0f }, size, rotation, texture, color);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& color)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation / 2.0f), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", glm::vec4(1.0f));
+
+		texture->Bind();
+
+		s_QuadData->TextureShader->Bind();
+		s_QuadData->QuadVertexArray->Bind();
+
+		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
 	}
 
 }

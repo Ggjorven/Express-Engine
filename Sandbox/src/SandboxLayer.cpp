@@ -49,7 +49,7 @@ void SandboxLayer::OnDetach()
 void SandboxLayer::OnUpdate()
 {
 	m_Shader->Bind();
-	//m_IndexBuffer->Bind();
+
 	m_VertexArray->Bind();
 
 	//Express::RendererCommand::DrawIndexed(m_VertexArray);
