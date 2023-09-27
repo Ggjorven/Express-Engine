@@ -15,6 +15,9 @@
 #include "Express/Events/ApplicationEvent.hpp"
 #include "Express/Events/KeyEvent.hpp"
 #include "Express/Events/MouseEvent.hpp"
+	//Codes
+	#include "Express/Events/Codes/KeyCodes.hpp"
+	#include "Express/Events/Codes/MouseCodes.hpp"
 
 //Renderer
 #include "Express/Renderer/Buffer.hpp"

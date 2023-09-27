@@ -53,6 +53,8 @@
     <ClInclude Include="src\Express\Core\Log.hpp" />
     <ClInclude Include="src\Express\Core\Window.hpp" />
     <ClInclude Include="src\Express\Events\ApplicationEvent.hpp" />
+    <ClInclude Include="src\Express\Events\Codes\KeyCodes.hpp" />
+    <ClInclude Include="src\Express\Events\Codes\MouseCodes.hpp" />
     <ClInclude Include="src\Express\Events\Event.hpp" />
     <ClInclude Include="src\Express\Events\KeyEvent.hpp" />
     <ClInclude Include="src\Express\Events\MouseEvent.hpp" />

@@ -27,12 +27,13 @@ void SandboxLayer::OnAttach()
 		0, 1, 2
 	};
 
+	m_VertexArray = Express::VertexArray::Create();
+
 	m_VertexBuffer = Express::VertexBuffer::Create(vertices, sizeof(vertices));
 	m_VertexBuffer->SetLayout(Express::BufferLayout({ Express::BufferElement(Express::ShaderDataType::Float2, "a_Position", false) }));
 
 	m_IndexBuffer = Express::IndexBuffer::Create(indices, 6);
 
-	m_VertexArray = Express::VertexArray::Create();
 	m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 	m_VertexArray->AddIndexBuffer(m_IndexBuffer);
 
@@ -52,9 +53,9 @@ void SandboxLayer::OnUpdate()
 
 	m_VertexArray->Bind();
 
-	//Express::RendererCommand::DrawIndexed(m_VertexArray);
+	Express::RendererCommand::DrawIndexed(m_VertexArray);
 
-	Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	//Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 	//Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 }
 

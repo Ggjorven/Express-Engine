@@ -176,5 +176,11 @@
     <ClInclude Include="src\RenderingAPIs\OpenGL\OpenGLTexture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Express\Events\Codes\KeyCodes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Express\Events\Codes\MouseCodes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
