@@ -50,7 +50,10 @@ private:
             m_Addition -= 0.05f;
 
         if (e.GetKeyCode() == EX_KEY_SPACE)
+        {
             m_Addition *= -1;
+            EX_WARN("Mouse position {0}", Express::Input::GetMousePosition().ToString());
+        }
 
         return true;
     }

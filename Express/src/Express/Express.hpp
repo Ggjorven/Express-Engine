@@ -18,6 +18,8 @@
 	//Codes
 	#include "Express/Events/Codes/KeyCodes.hpp"
 	#include "Express/Events/Codes/MouseCodes.hpp"
+	//Input
+	#include "Express/Events/Input/Input.hpp"
 
 //Renderer
 #include "Express/Renderer/Buffer.hpp"
