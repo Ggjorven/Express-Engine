@@ -19,12 +19,6 @@ public:
 
     void OnUpdate() override
     {
-        //Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), m_Degrees, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-
-        //Express::Renderer2D::DrawQuad(glm::vec2(0.5f, 0.5f), glm::vec2(1.0f, 1.0f), m_Degrees, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-
-        //Express::Renderer2D::DrawQuad(glm::vec2(-0.5f, -0.5f), glm::vec2(1.0f, 1.0f), m_Degrees, glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
         Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), m_Degrees, m_Texture);
 
         m_Degrees += m_Addition;

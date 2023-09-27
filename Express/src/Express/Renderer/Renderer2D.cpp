@@ -64,7 +64,6 @@ namespace Express
 		ShaderSource shaderSource = Shader::Read("assets/shaders/Texture.glsl");
 		s_QuadData->TextureShader = Shader::Create("ColourShader", shaderSource.VertexSource, shaderSource.FragmentSource);
 
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformInt1("u_Texture", 0);
 	}
 
@@ -90,18 +89,12 @@ namespace Express
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) 
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
-
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", color);
 
+
 		s_QuadData->WhiteTexture->Bind();
-
-		s_QuadData->TextureShader->Bind();
-		s_QuadData->QuadVertexArray->Bind();
-
-		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
+		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray, s_QuadData->TextureShader);
 	}
 
 	//+ rotation
@@ -116,18 +109,12 @@ namespace Express
 			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation / 2.0f), { 0.0f, 0.0f, 1.0f })
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
-
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", color);
 
 		s_QuadData->WhiteTexture->Bind();
 
-		s_QuadData->TextureShader->Bind();
-		s_QuadData->QuadVertexArray->Bind();
-
-		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
+		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray, s_QuadData->TextureShader);
 	}
 
 	//================
@@ -143,18 +130,12 @@ namespace Express
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
-
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", glm::vec4(1.0f));
 
 		texture->Bind();
 
-		s_QuadData->TextureShader->Bind();
-		s_QuadData->QuadVertexArray->Bind();
-
-		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
+		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray, s_QuadData->TextureShader);
 	}
 
 	//+ rotation
@@ -169,18 +150,12 @@ namespace Express
 			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation / 2.0f), { 0.0f, 0.0f, 1.0f })
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
-
-		s_QuadData->TextureShader->Bind();
 		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", glm::vec4(1.0f));
 
 		texture->Bind();
 
-		s_QuadData->TextureShader->Bind();
-		s_QuadData->QuadVertexArray->Bind();
-
-		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray);
+		RendererCommand::DrawIndexed(s_QuadData->QuadVertexArray, s_QuadData->TextureShader);
 	}
 
 }

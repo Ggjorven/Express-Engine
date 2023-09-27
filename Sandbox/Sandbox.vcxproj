@@ -124,7 +124,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\SandboxApplication.cpp" />
-    <ClCompile Include="src\SandboxLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Express\Express.vcxproj">

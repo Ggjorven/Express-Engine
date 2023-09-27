@@ -43,8 +43,17 @@ namespace Express
 
 	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
 	{
-		//EX_CORE_WARN("DrawIndexed...");
-		//EX_CORE_WARN("IndexBuffer Count: {0}", vertexArray->GetIndexBuffer()->GetCount());
+		vertexArray->Bind();
+
+		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+
+	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray, const Ref<Shader>& shader)
+	{
+		shader->Bind();
+		vertexArray->Bind();
+
 		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}

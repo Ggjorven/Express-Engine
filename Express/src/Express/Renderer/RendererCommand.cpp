@@ -32,4 +32,9 @@ namespace Express
 		s_RendererAPI->DrawIndexed(vertexArray);
 	}
 
+	void RendererCommand::DrawIndexed(const Ref<VertexArray>& vertexArray, const Ref<Shader>& shader) 
+	{
+		s_RendererAPI->DrawIndexed(vertexArray, shader);
+	}
+
 }

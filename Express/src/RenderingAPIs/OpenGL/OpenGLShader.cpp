@@ -121,7 +121,7 @@ namespace Express
 
 	GLint OpenGLShader::GetUniformLocation(const std::string& name)
 	{
-		//Bind();
+		Bind(); //So you don't have to explicitly do it yourself
 
 		//TODO cache
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
