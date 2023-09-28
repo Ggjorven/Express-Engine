@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\SandboxApplication.cpp" />
+    <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Express\Express.vcxproj">
@@ -131,7 +131,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\SandboxLayer.hpp" />
+    <ClInclude Include="src\TriangleLayer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\basic.glsl" />

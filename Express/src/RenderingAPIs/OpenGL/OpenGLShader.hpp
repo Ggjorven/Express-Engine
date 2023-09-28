@@ -40,4 +40,15 @@ namespace Express
 		std::unordered_map<std::string, GLint> m_UniformCache; //TODO
 	};
 
+	class OpenGLShaderLib : public ShaderLib
+	{
+	public:
+		OpenGLShaderLib() = default;
+		virtual ~OpenGLShaderLib() = default;
+
+		ShaderSource GetShaderSourceImplementation(ShaderLib::Type type) override;
+
+	private:
+	};
+
 }

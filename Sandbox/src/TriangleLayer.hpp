@@ -2,11 +2,11 @@
 
 #include <Express/Express.hpp>
 
-class SandboxLayer : public Express::Layer
+class TriangleLayer : public Express::Layer
 {
 public:
-	SandboxLayer() { m_DebugName = "SandboxLayer"; }
-	virtual ~SandboxLayer() {}
+	TriangleLayer() { m_DebugName = "TriangleLayer"; }
+	virtual ~TriangleLayer() {}
 
 	void OnAttach() override
 	{
@@ -36,7 +36,7 @@ public:
 		m_VertexArray->AddVertexBuffer(VBO);
 		m_VertexArray->AddIndexBuffer(IBO);
 
-		m_Shader = Express::Shader::Create("BasicShader", Express::Shader::Read("assets/shaders/basic.glsl").VertexSource, Express::Shader::Read("assets/shaders/basic.glsl").FragmentSource);
+		m_Shader = Express::Shader::Create("BasicShader", Express::ShaderLib::GetShaderSource(Express::ShaderLib::Type::Coloured).VertexSource, Express::ShaderLib::GetShaderSource(Express::ShaderLib::Type::Coloured).FragmentSource);
 
 		m_Shader->SetUniformFloat4("u_Colour", glm::vec4(0.9f, 0.5f, 0.5f, 1.0f));
 	}

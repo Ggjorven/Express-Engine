@@ -61,8 +61,8 @@ namespace Express
 		s_QuadData->WhiteTexture->SetData(&whiteTextureData, sizeof(uint32_t));
 
 
-		ShaderSource shaderSource = Shader::Read("assets/shaders/Texture.glsl");
-		s_QuadData->TextureShader = Shader::Create("ColourShader", shaderSource.VertexSource, shaderSource.FragmentSource);
+		ShaderSource shaderSource = ShaderLib::GetShaderSource(ShaderLib::Type::Textured_Coloured_Transform);
+		s_QuadData->TextureShader = Shader::Create("TexturedShader", shaderSource.VertexSource, shaderSource.FragmentSource);
 
 		s_QuadData->TextureShader->SetUniformInt1("u_Texture", 0);
 	}

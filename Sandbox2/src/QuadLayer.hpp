@@ -1,7 +1,5 @@
 #include <Express/Express.hpp>
 
-#include <GL/glew.h>
-
 class QuadLayer : public Express::Layer
 {
 public:
@@ -19,6 +17,12 @@ public:
 
     void OnUpdate() override
     {
+        if (Express::Input::IsKeyPressed(EX_KEY_UP))
+            m_Addition += 0.05f;
+
+        if (Express::Input::IsKeyPressed(EX_KEY_DOWN))
+            m_Addition -= 0.05f;
+
         Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), m_Degrees, m_Texture);
 
         m_Degrees += m_Addition;
@@ -37,16 +41,10 @@ public:
 private:
     bool KeyPressEvent(Express::KeyPressedEvent& e)
     {
-        if (e.GetKeyCode() == EX_KEY_UP)
-            m_Addition += 0.05f;
-
-        if (e.GetKeyCode() == EX_KEY_DOWN)
-            m_Addition -= 0.05f;
-
         if (e.GetKeyCode() == EX_KEY_SPACE)
         {
             m_Addition *= -1;
-            EX_WARN("Mouse position {0}", Express::Input::GetMousePosition().ToString());
+            EX_TRACE("Example of Mouse position {0}", Express::Input::GetMousePosition().ToString());
         }
 
         return true;
