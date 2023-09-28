@@ -9,6 +9,8 @@
 
 namespace Express
 {
+	Scope<ShaderLib> ShaderLib::s_Instance = CreateScope<OpenGLShaderLib>();
+
 
 	ShaderSource Shader::Read(const std::string& filepath)
 	{
@@ -69,6 +71,18 @@ namespace Express
 		{
 		case RendererAPI::API::None: EX_CORE_ASSERT(false, "RendererAPI::API::None not supported."); break;
 		case RendererAPI::API::OpenGL: return CreateScope<OpenGLShader>(name, vertexSource, fragmentSource);
+		}
+
+		EX_CORE_ASSERT(false, "Not a valid API");
+		return nullptr;
+	}
+
+	Scope<ShaderLib> ShaderLib::Create()
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None: EX_CORE_ASSERT(false, "RendererAPI::API::None not supported."); break;
+		case RendererAPI::API::OpenGL: return CreateScope<OpenGLShaderLib>();
 		}
 
 		EX_CORE_ASSERT(false, "Not a valid API");

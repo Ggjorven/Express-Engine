@@ -46,6 +46,30 @@ namespace Express
 
 	};
 
-	//TODO ShaderLib
+	class ShaderLib
+	{
+	public:
+		enum class Type
+		{
+			None = 0, 
+
+			Coloured, Textured, Textured_Coloured,
+			Coloured_Transform, Textured_Transform, Textured_Coloured_Transform,
+			Coloured_Transform_ViewProj, Textured_Transform_ViewProj, Textured_Coloured_Transform_ViewProj
+		};
+
+	public:
+		ShaderLib() = default;			//Only to be used by the engine not the client
+		virtual ~ShaderLib() = default;
+
+		inline static ShaderSource GetShaderSource(ShaderLib::Type type) { return s_Instance->GetShaderSourceImplementation(type); }
+
+		static Scope<ShaderLib> Create();
+	protected:
+		virtual ShaderSource GetShaderSourceImplementation(ShaderLib::Type type) = 0;
+
+	private:
+		static Scope<ShaderLib> s_Instance;
+	};
 
 }

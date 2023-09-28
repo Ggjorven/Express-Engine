@@ -52,4 +52,4 @@ namespace Express
 //Assert
 #define EX_CORE_ASSERT(x, ...) if(!(x)) {\
 									EX_CORE_CRITICAL("Assertion failed: {0} ", __VA_ARGS__);\
-									__debugbreak; }
+									__debugbreak(); }

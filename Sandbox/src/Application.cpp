@@ -1,17 +1,17 @@
-#include "SandboxApplication.hpp"
+#include "TriangleLayer.hpp"
 
-#include "SandboxLayer.hpp"
-
-Sandbox::Sandbox()
+class Sandbox : public Express::Application
 {
-	AddLayer(new SandboxLayer());
-}
+public:
+	Sandbox()
+	{
+		AddLayer(new TriangleLayer());
+	}
 
-Sandbox::~Sandbox()
-{
-}
+	virtual ~Sandbox() {}
 
-
+private:
+};
 
 
 
