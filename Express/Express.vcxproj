@@ -28,6 +28,8 @@
     </ClCompile>
     <ClCompile Include="src\Express\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Express\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Express\Renderer\OrthoGraphicCamera.cpp" />
+    <ClCompile Include="src\Express\Renderer\OrthoGraphicCameraController.cpp" />
     <ClCompile Include="src\Express\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Express\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Express\Renderer\RendererAPI.cpp" />
@@ -64,6 +66,8 @@
     <ClInclude Include="src\Express\Express.hpp" />
     <ClInclude Include="src\Express\Renderer\Buffer.hpp" />
     <ClInclude Include="src\Express\Renderer\GraphicsContext.hpp" />
+    <ClInclude Include="src\Express\Renderer\OrthoGraphicCamera.hpp" />
+    <ClInclude Include="src\Express\Renderer\OrthoGraphicCameraController.hpp" />
     <ClInclude Include="src\Express\Renderer\Renderer.hpp" />
     <ClInclude Include="src\Express\Renderer\Renderer2D.hpp" />
     <ClInclude Include="src\Express\Renderer\RendererAPI.hpp" />
