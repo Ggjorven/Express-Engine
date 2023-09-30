@@ -203,5 +203,8 @@
     <ClInclude Include="src\Express\Renderer\OrthoGraphicCameraController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Express\Core\TimeStep.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

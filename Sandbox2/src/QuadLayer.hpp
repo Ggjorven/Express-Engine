@@ -13,19 +13,38 @@ public:
         Express::RendererCommand::SetClearColour(glm::vec4(0.2f, 0.3f, 0.4f, 1.0f));
 
         m_Texture = Express::Texture2D::Create("assets/images/test.png");
+        m_CameraController = Express::CreateScope<Express::OrthoGraphicCameraController>(16/9);
     }
 
-    void OnUpdate() override
+    void OnUpdate(Express::TimeStep& ts) override
     {
-        if (Express::Input::IsKeyPressed(EX_KEY_UP))
-            m_Addition += 0.05f;
+        m_CameraController->OnUpdate(ts);
 
-        if (Express::Input::IsKeyPressed(EX_KEY_DOWN))
-            m_Addition -= 0.05f;
+        //Rotation
+        if (Express::Input::IsKeyPressed(EX_KEY_E))
+            m_Degrees += 1.5f * ts;
 
-        Express::Renderer2D::DrawQuad(glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f), m_Degrees, m_Texture);
+        if (Express::Input::IsKeyPressed(EX_KEY_Q))
+            m_Degrees -= 1.5f * ts;
 
-        m_Degrees += m_Addition;
+        //Position
+        if (Express::Input::IsKeyPressed(EX_KEY_D))
+            m_Position.x += 0.35f * ts;
+
+        if (Express::Input::IsKeyPressed(EX_KEY_A))
+            m_Position.x -= 0.35f * ts;
+
+        if (Express::Input::IsKeyPressed(EX_KEY_W))
+            m_Position.y += 0.35f * ts;
+
+        if (Express::Input::IsKeyPressed(EX_KEY_S))
+            m_Position.y -= 0.35f * ts;
+    }
+    
+    void OnRender() override
+    {
+        //Rendering
+        Express::Renderer2D::DrawQuad(glm::vec2(m_Position.x, m_Position.y), glm::vec2(1.0f, 1.0f), m_Degrees, m_Texture, m_CameraController->GetCamera());
     }
 
     void OnDetach() override {}
@@ -36,6 +55,9 @@ public:
         Express::EventHandler handler(e);
 
         handler.Handle<Express::KeyPressedEvent>(EX_BIND_EVENT_FN(QuadLayer::KeyPressEvent));
+
+        //Update camera
+        m_CameraController->OnEvent(e);
     }
 
 private:
@@ -43,8 +65,8 @@ private:
     {
         if (e.GetKeyCode() == EX_KEY_SPACE)
         {
-            m_Addition *= -1;
-            EX_TRACE("Example of Mouse position {0}", Express::Input::GetMousePosition().ToString());
+            m_Degrees += 180;
+            //EX_TRACE("Example of Mouse position {0}", Express::Input::GetMousePosition().ToString());
         }
 
         return true;
@@ -53,7 +75,10 @@ private:
 private:
     Express::Ref<Express::VertexArray> m_VAO;
     Express::Ref<Express::Texture2D> m_Texture;
+    Express::Scope<Express::OrthoGraphicCameraController> m_CameraController;
 
     float m_Degrees = 0.0f;
-    float m_Addition = 0.30f;
+    //float m_Addition = 0.00f;
+
+    glm::vec2 m_Position = { 0.0f, 0.0f };
 };

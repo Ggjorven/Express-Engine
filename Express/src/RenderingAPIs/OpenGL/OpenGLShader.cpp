@@ -450,5 +450,8 @@ namespace Express
 		case ShaderLib::Type::Textured_Transform_ViewProj: return TextureTVP;
 		case ShaderLib::Type::Textured_Coloured_Transform_ViewProj: return TextureColourTVP;
 		}
+
+		EX_CORE_ASSERT(false, "Not a proper shader selected.");
+		return ShaderSource("error", "error");
 	}
 }

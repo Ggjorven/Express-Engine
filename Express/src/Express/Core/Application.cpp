@@ -14,7 +14,7 @@ namespace Express
 
 
 	Application::Application()
-		: m_Running(true)
+		: m_Running(true), m_LastTime(0.0f)
 	{
 		Init();
 	}
@@ -35,6 +35,7 @@ namespace Express
 	void Application::OnEvent(Event& e)
 	{
 		EventHandler handler(e);
+
 		handler.Handle<WindowCloseEvent>(EX_BIND_EVENT_FN(Application::OnWindowClose));
 		handler.Handle<WindowResizeEvent>(EX_BIND_EVENT_FN(Application::OnWindowResize));
 
@@ -46,14 +47,33 @@ namespace Express
 	{
 		while (m_Running)
 		{
+			//Update deltaTime
+			float currentTime = (float)glfwGetTime();
+			TimeStep deltaTime(currentTime - m_LastTime);
+			//EX_CORE_WARN("DeltaTime: {0}", deltaTime);
+
 			RendererCommand::Clear(); //Not in thecherno's version, but we need to clear the buffers somehow?
 
 			m_Window->OnUpdate();
 
+			//Update & Render layers
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+			{
+				layer->OnUpdate(deltaTime);
+				layer->OnRender();
+			}
+
+			//Imgui-layer begin TODO
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			//Imgui-layer end
 			
 			m_Window->OnRender();
+
+			//Update deltaTime
+			m_LastTime = currentTime;
 		}
 	}
 

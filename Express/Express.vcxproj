@@ -54,6 +54,7 @@
     <ClInclude Include="src\Express\Core\Layer.hpp" />
     <ClInclude Include="src\Express\Core\LayerStack.hpp" />
     <ClInclude Include="src\Express\Core\Log.hpp" />
+    <ClInclude Include="src\Express\Core\TimeStep.hpp" />
     <ClInclude Include="src\Express\Core\Window.hpp" />
     <ClInclude Include="src\Express\Events\ApplicationEvent.hpp" />
     <ClInclude Include="src\Express\Events\Codes\KeyCodes.hpp" />

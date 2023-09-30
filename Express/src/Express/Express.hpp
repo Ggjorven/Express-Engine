@@ -9,6 +9,7 @@
 #include "Express/Core/Window.hpp"
 #include "Express/Core/Layer.hpp"
 #include "Express/Core/LayerStack.hpp"
+#include "Express/Core/TimeStep.hpp"
 
 //Events
 #include "Express/Events/Event.hpp"
@@ -30,6 +31,8 @@
 #include "Express/Renderer/Shader.hpp"
 #include "Express/Renderer/VertexArray.hpp"
 #include "Express/Renderer/Renderer2D.hpp"
+#include "Express/Renderer/OrthoGraphicCamera.hpp"
+#include "Express/Renderer/OrthoGraphicCameraController.hpp"
 
 
 //---Express-Engine-EntryPoint---//

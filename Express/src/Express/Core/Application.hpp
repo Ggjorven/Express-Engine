@@ -40,6 +40,9 @@ namespace Express
 		LayerStack m_LayerStack;
 	private:
 		static Application* s_Instance;
+
+		//For timestep
+		float m_LastTime;
 	};
 
 	Application* CreateApplication();
