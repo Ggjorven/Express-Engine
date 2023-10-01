@@ -4,7 +4,7 @@ class QuadLayer : public Express::Layer
 {
 public:
     QuadLayer()
-        : m_VAO(nullptr)
+        : m_VAO(nullptr), m_Position{0.0f, 0.0f}
     {
     }
 
@@ -13,7 +13,9 @@ public:
         Express::RendererCommand::SetClearColour(glm::vec4(0.2f, 0.3f, 0.4f, 1.0f));
 
         m_Texture = Express::Texture2D::Create("assets/images/test.png");
-        m_CameraController = Express::CreateScope<Express::OrthoGraphicCameraController>(16/9);
+        m_CameraController = Express::CreateScope<Express::OrthoGraphicCameraController>(Express::Application::Get().GetWindow().GetWidth(), Express::Application::Get().GetWindow().GetHeight());
+
+        //m_Position = glm::vec2(0.0f, 0.0f);
     }
 
     void OnUpdate(Express::TimeStep& ts) override
@@ -29,22 +31,26 @@ public:
 
         //Position
         if (Express::Input::IsKeyPressed(EX_KEY_D))
-            m_Position.x += 0.35f * ts;
+            m_Position.x += 75.f * ts;
 
         if (Express::Input::IsKeyPressed(EX_KEY_A))
-            m_Position.x -= 0.35f * ts;
+            m_Position.x -= 75.f * ts;
 
         if (Express::Input::IsKeyPressed(EX_KEY_W))
-            m_Position.y += 0.35f * ts;
+            m_Position.y += 75.f * ts;
 
         if (Express::Input::IsKeyPressed(EX_KEY_S))
-            m_Position.y -= 0.35f * ts;
+            m_Position.y -= 75.f * ts;
+
+        //Logging
+        EX_WARN("Position: x: {0}, y: {1}", m_Position.x, m_Position.y);
     }
     
     void OnRender() override
     {
         //Rendering
-        Express::Renderer2D::DrawQuad(glm::vec2(m_Position.x, m_Position.y), glm::vec2(1.0f, 1.0f), m_Degrees, m_Texture, m_CameraController->GetCamera());
+        Express::Renderer2D::DrawQuad(glm::vec2(m_Position.x, m_Position.y), glm::vec2(100.0f, 100.0f), m_Degrees, m_Texture, m_CameraController->GetCamera());
+        Express::Renderer2D::DrawQuad(glm::vec2(100.0f, 100.0f), glm::vec2(200.0f, 200.0f), m_CameraController->GetCamera(), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
     }
 
     void OnDetach() override {}
@@ -80,5 +86,5 @@ private:
     float m_Degrees = 0.0f;
     //float m_Addition = 0.00f;
 
-    glm::vec2 m_Position = { 0.0f, 0.0f };
+    glm::vec2 m_Position;
 };

@@ -3,6 +3,8 @@
 
 #include "Express/Core/Log.hpp"
 
+#include "Express/Core/Application.hpp"
+
 #include "Express/Events/Input/Input.hpp"
 #include "Express/Events/Codes/KeyCodes.hpp"
 
@@ -12,7 +14,14 @@ namespace Express
 	OrthoGraphicCameraController::OrthoGraphicCameraController(float width, float height, bool rotation)
 		: m_Width(width), m_Height(height), m_Rotation(rotation)
 	{
-		m_Camera = CreateRef<OrthoGraphicCamera>(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+
+		m_Camera = CreateRef<OrthoGraphicCamera>(
+			-aspectRatio * m_ZoomLevel,
+			aspectRatio * m_ZoomLevel,
+			-m_ZoomLevel,
+			m_ZoomLevel
+		);
 	}
 
 	void OrthoGraphicCameraController::OnUpdate(TimeStep& ts)
@@ -74,15 +83,27 @@ namespace Express
 	{
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
-		m_Camera->SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+
+		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+		m_Camera->SetProjection(
+			-aspectRatio * m_ZoomLevel, 
+			aspectRatio * m_ZoomLevel, 
+			-m_ZoomLevel, 
+			m_ZoomLevel
+		); //TODO fix
 
 		return false;
 	}
 
 	bool OrthoGraphicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
-		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-		m_Camera->SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+		float aspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
+
+		m_Camera->SetProjection(
+			-aspectRatio * m_ZoomLevel,
+			aspectRatio * m_ZoomLevel,
+			-m_ZoomLevel,
+			m_ZoomLevel);
 
 		return false;
 	}
