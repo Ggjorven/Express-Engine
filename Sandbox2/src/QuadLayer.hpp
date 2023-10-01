@@ -43,7 +43,7 @@ public:
             m_Position.y -= 75.f * ts;
 
         //Logging
-        EX_WARN("Position: x: {0}, y: {1}", m_Position.x, m_Position.y);
+        //EX_WARN("Position: x: {0}, y: {1}", m_Position.x, m_Position.y);
     }
     
     void OnRender() override

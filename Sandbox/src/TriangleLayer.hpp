@@ -42,7 +42,7 @@ public:
 	}
 
 
-	void OnUpdate() override
+	void OnUpdate(Express::TimeStep& ts) override
 	{
 		Express::RendererCommand::DrawIndexed(m_VertexArray, m_Shader);
 	}
