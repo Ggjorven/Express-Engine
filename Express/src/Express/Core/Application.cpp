@@ -63,12 +63,12 @@ namespace Express
 				layer->OnRender();
 			}
 
-			//Imgui-layer begin TODO
+			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnImGuiRender();
 			}
-			//Imgui-layer end
+			m_ImGuiLayer->End();
 			
 			m_Window->OnRender();
 
@@ -98,7 +98,8 @@ namespace Express
 
 		Renderer::Init();
 
-		//ImGui TODO
+		m_ImGuiLayer = new BaseImGuiLayer();
+		AddOverlay(m_ImGuiLayer);
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)

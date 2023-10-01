@@ -22,6 +22,9 @@
 	//Input
 	#include "Express/Events/Input/Input.hpp"
 
+//ImGui
+#include "Express/ImGui/BaseImGuiLayer.hpp"
+
 //Renderer
 #include "Express/Renderer/Buffer.hpp"
 #include "Express/Renderer/GraphicsContext.hpp"

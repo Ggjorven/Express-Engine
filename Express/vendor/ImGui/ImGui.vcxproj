@@ -26,8 +26,6 @@
     <ClInclude Include="data\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="data\backends\imgui_impl_glfw.cpp" />
-    <ClCompile Include="data\backends\imgui_impl_opengl3.cpp" />
     <ClCompile Include="data\imgui.cpp" />
     <ClCompile Include="data\imgui_demo.cpp" />
     <ClCompile Include="data\imgui_draw.cpp" />

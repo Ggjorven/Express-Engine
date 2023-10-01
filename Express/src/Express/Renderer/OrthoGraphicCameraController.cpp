@@ -15,12 +15,13 @@ namespace Express
 		: m_Width(width), m_Height(height), m_Rotation(rotation)
 	{
 		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+		//float testAspectRatio = (float)Application::Get().GetWindow().GetHeight() / (float)Application::Get().GetWindow().GetWidth();
 
 		m_Camera = CreateRef<OrthoGraphicCamera>(
-			-aspectRatio * m_ZoomLevel,
-			aspectRatio * m_ZoomLevel,
-			-m_ZoomLevel,
-			m_ZoomLevel
+			-aspectRatio * m_ZoomLevel / 2.0f,
+			aspectRatio * m_ZoomLevel / 2.0f,
+			-m_ZoomLevel / 2.0f,
+			m_ZoomLevel / 2.0f
 		);
 	}
 
@@ -85,11 +86,12 @@ namespace Express
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 
 		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+
 		m_Camera->SetProjection(
-			-aspectRatio * m_ZoomLevel, 
-			aspectRatio * m_ZoomLevel, 
-			-m_ZoomLevel, 
-			m_ZoomLevel
+			-aspectRatio * m_ZoomLevel / 2.0f,
+			aspectRatio * m_ZoomLevel / 2.0f,
+			-m_ZoomLevel / 2.0f,
+			m_ZoomLevel / 2.0f
 		); //TODO fix
 
 		return false;
@@ -100,10 +102,11 @@ namespace Express
 		float aspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 
 		m_Camera->SetProjection(
-			-aspectRatio * m_ZoomLevel,
-			aspectRatio * m_ZoomLevel,
-			-m_ZoomLevel,
-			m_ZoomLevel);
+			-aspectRatio * m_ZoomLevel / 2.0f,
+			aspectRatio * m_ZoomLevel / 2.0f,
+			-m_ZoomLevel / 2.0f,
+			m_ZoomLevel / 2.0f
+		);
 
 		return false;
 	}

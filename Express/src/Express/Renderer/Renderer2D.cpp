@@ -88,8 +88,11 @@ namespace Express
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<OrthoGraphicCamera>& camera, const glm::vec4& color)
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), { position.x / Application::Get().GetWindow().GetWidth() * 2, position.y / Application::Get().GetWindow().GetHeight(), position.z  })
-			* glm::scale(glm::mat4(1.0f), { size.x / Application::Get().GetWindow().GetWidth() * 2, size.y / Application::Get().GetWindow().GetHeight(), 1.0f });
+		//TODO make it proper pixel space
+		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), { position.x / aspectRatio / 400.0f, position.y / aspectRatio / 400.0f, position.z  })
+			* glm::scale(glm::mat4(1.0f), { size.x / aspectRatio / 400.0f, size.y / aspectRatio / 400.0f, 1.0f });
 
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
 
@@ -111,9 +114,12 @@ namespace Express
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<OrthoGraphicCamera>& camera, const glm::vec4& color)
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), { position.x / Application::Get().GetWindow().GetWidth() * 2, position.y / Application::Get().GetWindow().GetHeight(), position.z })
-			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation / 2.0f), { 0.0f, 0.0f, 1.0f })
-			* glm::scale(glm::mat4(1.0f), { size.x / Application::Get().GetWindow().GetWidth() * 2, size.y / Application::Get().GetWindow().GetHeight(), 1.0f });
+		//TODO make it proper pixel space
+		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), { position.x / aspectRatio / 400.0f, position.y / aspectRatio / 400.0f, position.z })
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x / aspectRatio / 400.0f, size.y / aspectRatio / 400.0f, 1.0f });
 
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
 
@@ -137,8 +143,11 @@ namespace Express
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const Ref<OrthoGraphicCamera>& camera)
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), { position.x / Application::Get().GetWindow().GetWidth() * 2, position.y / Application::Get().GetWindow().GetHeight(), position.z })
-			* glm::scale(glm::mat4(1.0f), { size.x / Application::Get().GetWindow().GetWidth() * 2, size.y / Application::Get().GetWindow().GetHeight(), 1.0f });
+		//TODO make it proper pixel space
+		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), { position.x / aspectRatio / 400.0f, position.y / aspectRatio / 400.0f, position.z })
+			* glm::scale(glm::mat4(1.0f), { size.x / aspectRatio / 400.0f, size.y / aspectRatio / 400.0f, 1.0f });
 
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
 
@@ -160,9 +169,12 @@ namespace Express
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const Ref<OrthoGraphicCamera>& camera, const glm::vec4& color)
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), {position.x / Application::Get().GetWindow().GetWidth() * 2, position.y / Application::Get().GetWindow().GetHeight(), position.z})
-			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation / 2.0f), { 0.0f, 0.0f, 1.0f })
-			* glm::scale(glm::mat4(1.0f), { size.x / Application::Get().GetWindow().GetWidth() * 2, size.y / Application::Get().GetWindow().GetHeight(), 1.0f}); //Size into pixel space TODO
+		//TODO make it proper pixel space
+		float aspectRatio = (float)Application::Get().GetWindow().GetWidth() / (float)Application::Get().GetWindow().GetHeight();
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), { position.x / aspectRatio / 400.0f, position.y / aspectRatio / 400.0f, position.z})
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x / aspectRatio / 400.0f, size.y / aspectRatio / 400.0f, 1.0f}); //Size into pixel space TODO
 
 		s_QuadData->TextureShader->SetUniformMat4("u_Transform", transform);
 
