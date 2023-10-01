@@ -8,6 +8,8 @@ class Sandbox : public Express::Application
 public:
     Sandbox()
     {
+        GetWindow().SetVSync(true);
+
         AddLayer(new QuadLayer());
     }
 

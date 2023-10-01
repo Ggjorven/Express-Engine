@@ -8,6 +8,8 @@
 
 #include "Express/Core/LayerStack.hpp"
 
+#include "Express/ImGui/BaseImGuiLayer.hpp"
+
 namespace Express
 {
 
@@ -27,11 +29,13 @@ namespace Express
 		inline Window& GetWindow() { return *m_Window; }
 
 		inline static Application& Get() { return *s_Instance; }
+
 	private:
 		void Init();
 
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e); 
+
 	private:
 		Scope<Window> m_Window;
 		bool m_Running;
@@ -40,6 +44,11 @@ namespace Express
 		LayerStack m_LayerStack;
 	private:
 		static Application* s_Instance;
+
+		BaseImGuiLayer* m_ImGuiLayer;
+
+		//For deltatime
+		float m_LastTime;
 	};
 
 	Application* CreateApplication();

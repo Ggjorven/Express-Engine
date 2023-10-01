@@ -42,6 +42,7 @@ namespace Express
 	{
 		glfwSwapInterval(enabled);
 		m_Data.Vsync = enabled;
+		//EX_INFO("VSync: {0}", enabled);
 	}
 
 
@@ -54,6 +55,7 @@ namespace Express
 			EX_CRITICAL("Failed to initialize GLFW.");
 			return 0;
 		}
+		s_GLFWinitialized = true;
 		glfwSetErrorCallback(ErrorCallBack);
 
 		//Window creation
@@ -69,7 +71,7 @@ namespace Express
 		//Graphics context init 
 		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
-		SetVSync(true);
+		//SetVSync(true);
 
 		//Event system
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)

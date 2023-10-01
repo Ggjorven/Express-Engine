@@ -2,6 +2,7 @@
 
 #include "Express/Core/Core.hpp"
 
+#include "Express/Core/TimeStep.hpp"
 #include "Express/Events/Event.hpp"
 
 namespace Express
@@ -16,7 +17,8 @@ namespace Express
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
 
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(TimeStep& ts) {}
+		virtual void OnRender() {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& e) {}
 

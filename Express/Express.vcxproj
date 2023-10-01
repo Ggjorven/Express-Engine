@@ -26,8 +26,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Express\ImGui\BaseImGuiLayer.cpp" />
+    <ClCompile Include="src\Express\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Express\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Express\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Express\Renderer\OrthoGraphicCamera.cpp" />
+    <ClCompile Include="src\Express\Renderer\OrthoGraphicCameraController.cpp" />
     <ClCompile Include="src\Express\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Express\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Express\Renderer\RendererAPI.cpp" />
@@ -52,6 +56,7 @@
     <ClInclude Include="src\Express\Core\Layer.hpp" />
     <ClInclude Include="src\Express\Core\LayerStack.hpp" />
     <ClInclude Include="src\Express\Core\Log.hpp" />
+    <ClInclude Include="src\Express\Core\TimeStep.hpp" />
     <ClInclude Include="src\Express\Core\Window.hpp" />
     <ClInclude Include="src\Express\Events\ApplicationEvent.hpp" />
     <ClInclude Include="src\Express\Events\Codes\KeyCodes.hpp" />
@@ -62,8 +67,11 @@
     <ClInclude Include="src\Express\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Express\expch.h" />
     <ClInclude Include="src\Express\Express.hpp" />
+    <ClInclude Include="src\Express\ImGui\BaseImGuiLayer.hpp" />
     <ClInclude Include="src\Express\Renderer\Buffer.hpp" />
     <ClInclude Include="src\Express\Renderer\GraphicsContext.hpp" />
+    <ClInclude Include="src\Express\Renderer\OrthoGraphicCamera.hpp" />
+    <ClInclude Include="src\Express\Renderer\OrthoGraphicCameraController.hpp" />
     <ClInclude Include="src\Express\Renderer\Renderer.hpp" />
     <ClInclude Include="src\Express\Renderer\Renderer2D.hpp" />
     <ClInclude Include="src\Express\Renderer\RendererAPI.hpp" />
