@@ -2,15 +2,15 @@
 #include <Express/Core/EntryPoint.hpp>
 
 #include "QuadLayer.hpp"
+#include "CustomImGuiLayer.hpp"
 
 class Sandbox : public Express::Application
 {
 public:
     Sandbox()
     {
-        GetWindow().SetVSync(true);
-
-        AddLayer(new QuadLayer());
+        //AddLayer(new QuadLayer());
+        AddLayer(new CustomImGuiLayer());
     }
 
     ~Sandbox()

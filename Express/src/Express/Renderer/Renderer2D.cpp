@@ -181,7 +181,7 @@ namespace Express
 		if (camera != nullptr) s_QuadData->TextureShader->SetUniformMat4("u_ViewProj", camera->GetViewProjectionMatrix());
 		else s_QuadData->TextureShader->SetUniformMat4("u_ViewProj", glm::mat4(1.0f));
 
-		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", glm::vec4(1.0f));
+		s_QuadData->TextureShader->SetUniformFloat4("u_Colour", color);
 
 		texture->Bind();
 
